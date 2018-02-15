@@ -1,0 +1,13 @@
+#!/bin/bash
+
+SCRIPT=$(dirname $0)
+
+TYPE=$(cat $SCRIPT/type.mem)
+NAMESPACE=$(cat $SCRIPT/namespace.mem)
+INDEX=$1
+INDEX=$((INDEX+1))
+
+ID=$(cat $SCRIPT/output.mem | sed -n "$INDEX"p | awk '{print $1}')
+
+echo kubectl describe $TYPE $ID -n $NAMESPACE
+kubectl describe $TYPE $ID -n $NAMESPACE

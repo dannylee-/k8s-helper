@@ -1,0 +1,42 @@
+#!/bin/bash
+SCRIPT=$(dirname $0)
+ARGS=$@
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -n|--namespace)
+    NAMESPACE="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+if [[ ! -z $NAMESPACE ]]; then
+  echo $NAMESPACE > $SCRIPT/namespace.mem
+else
+  NAMESPACE=$(cat $SCRIPT/namespace.mem)
+  ARGS+=' -n '
+  ARGS+=$NAMESPACE
+fi
+
+echo "kubectl $ARGS"
+OUTPUT=$(kubectl $ARGS)
+echo "$OUTPUT" > $SCRIPT/output.mem
+if [[ $1 = "get" ]]; then
+  if [[ $2 != "ns" ]]; then
+    echo $2 > $SCRIPT/type.mem
+  fi
+  echo "$OUTPUT" | cat $SCRIPT/output.mem | awk 'BEGIN {FS=OFS="\t"; Q=""} {print Q (NR==1 ? "ID" : ++n) Q, $0}'
+else
+  echo "$OUTPUT"
+fi
