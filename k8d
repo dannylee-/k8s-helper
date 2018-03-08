@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 SCRIPT=$(dirname $0)
 
@@ -9,5 +10,5 @@ INDEX=$((INDEX+1))
 
 ID=$(cat $SCRIPT/output.mem | sed -n "$INDEX"p | awk '{print $1}')
 
-echo kubectl describe $TYPE $ID -n $NAMESPACE
-kubectl describe $TYPE $ID -n $NAMESPACE
+echo kubectl describe $TYPE $ID -n $NAMESPACE ${@:2}
+kubectl describe $TYPE $ID -n $NAMESPACE ${@:2}
