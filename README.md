@@ -15,3 +15,7 @@ source ~/.bash_profile
 ```k8d <ID>``` - Gets the details of one of the items listed in the last "k8 get" call
 
 ```k8ssh <ID>``` - kubectl exec into one of the pods listed in the last "k8 get" call
+
+```k8log <ID>``` - kubectl log into one of the pods listed in the last "k8 get" call
+
+```k8del <ID>``` - Delete one of the items listed in the last "k8 get" call
