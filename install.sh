@@ -7,6 +7,8 @@ if cat ~/.bash_profile | grep "k8s-helper"; then
   exit 0;
 fi
 
+echo "default" > namespace.mem
+
 echo "" >> ~/.bash_profile
 echo "#### k8s-helper ####" >> ~/.bash_profile
 echo "alias k8='$SCRIPT/k8'" >> ~/.bash_profile
