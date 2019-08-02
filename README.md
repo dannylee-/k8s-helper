@@ -21,3 +21,7 @@ source ~/.bash_profile
 ```k8log <ID>``` - kubectl log into one of the pods listed in the last "k8 get" call
 
 ```k8del <ID>``` - Delete one of the items listed in the last "k8 get" call
+
+## Example
+
+![alt text](./example.png "Logo Title Text 1")
