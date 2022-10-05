@@ -16,9 +16,13 @@ source ~/.bash_profile
 
 ```k8e <ID>``` - Edits the resource of one of the items listed in the last "k8 get" call
 
-```k8ssh <ID>``` - kubectl exec into one of the pods listed in the last "k8 get" call
+```k8get <ID>``` - Get the resource of one of the items listed in the last "k8 get" call.  This can be used in conjuction with "-oyaml" or "-o=jsonpath="
 
-```k8log <ID>``` - kubectl log into one of the pods listed in the last "k8 get" call
+```k8exec <ID> <COMMAND>``` - kubectl exec into one of the pods listed in the last "k8 get" call
+
+```k8ssm <ID>``` - SSM into the host node for one of the pods listed in the last "k8 get" call
+
+```k8log <ID>``` - kubectl log into one of the pods listed in the last "k8 get" call.  This can be used in conjunction with "-f" to tail the logs or "-c" to choose a specific container
 
 ```k8del <ID>``` - Delete one of the items listed in the last "k8 get" call
 
