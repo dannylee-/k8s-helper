@@ -16,6 +16,7 @@ echo "alias k8get='$SCRIPT/k8get'" >> ~/.bash_profile
 echo "alias k8d='$SCRIPT/k8d'" >> ~/.bash_profile
 echo "alias k8e='$SCRIPT/k8e'" >> ~/.bash_profile
 echo "alias k8exec='$SCRIPT/k8exec'" >> ~/.bash_profile
+echo "alias k8ssm='$SCRIPT/k8ssm'" >> ~/.bash_profile
 echo "alias k8log='$SCRIPT/k8log'" >> ~/.bash_profile
 echo "alias k8del='$SCRIPT/k8del'" >> ~/.bash_profile
 echo "#### k8s-helper END ####" >> ~/.bash_profile
